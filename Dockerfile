@@ -7,6 +7,7 @@ RUN apk --no-cache add curl wget jq \
  && wget -qO /usr/local/bin/go-httpcheck "$(/usr/local/bin/go-github rLatestUrl --ghorg qnib --ghrepo go-httpcheck --regex '.*_Alpine' --limit 1)" \
  && chmod +x /usr/local/bin/go-httpcheck \
  && rm -f /usr/local/bin/go-github
+LABEL org.qnib.havener.port.8080=""
 HEALTHCHECK --interval=5s --retries=15 --timeout=2s \
   CMD /usr/local/bin/healthcheck.sh
 COPY opt/qnib/entry/*.sh /opt/qnib/entry/
